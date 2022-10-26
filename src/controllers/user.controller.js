@@ -5,7 +5,7 @@ const createUser = async (req, res) => {
   const newUser = await userService.createUser(req.body);
 
   const token = jwtUtil.createToken(newUser);
-  
+
   return res.status(201).json({ token });
 };
 
