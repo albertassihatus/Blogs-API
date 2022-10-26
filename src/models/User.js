@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
       },
+
       displayName: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
@@ -15,8 +16,14 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
       underscored: true, 
       tableName: 'users'
-    },
-    );
+    });
+
+  User.associate = (models) => {
+    User.hasMany(models.BlogPost, {
+      as: 'blog_posts',
+      foreignKey: 'user_id',
+    })
+  }
   
     return User;
   };
