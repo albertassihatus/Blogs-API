@@ -16,14 +16,14 @@ const validateBody = (params) => {
   return value;
 };
 
-const validateLogin = async ({ email }) => {
-    const user = await User.findOne({ where: { email } });
+const validateLogin = async ({ email, password }) => {
+  const user = await User.findOne({ where: { email } });
 
-    if (user.email !== email) {
-        const e = new Error('Some required fields are missing');
-        e.name = 'UnauthorizedError';
-        throw e;
-    }
+  if (!user || user.password !== password) {
+    const e = new Error('Usuário não existe ou senha inválida');
+    e.name = 'UnauthorizedError';
+    throw e;
+  }
   
   /* 
   Nesta linha estamos usando o conceito de rest operator e destruturação
