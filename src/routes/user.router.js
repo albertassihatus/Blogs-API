@@ -2,6 +2,8 @@ const express = require('express');
 
 const userController = require('../controllers/user.controller');
 
+const authMiddleware = require('../middlewares/auth.middleware');
+
 const { nameValidate,
     emailValidate,
     passwordValidate,
@@ -14,8 +16,8 @@ emailValidate,
 passwordValidate,
 existEmail, userController.createUser);
 
-router.get('/', userController.getAll);
+router.get('/', authMiddleware.validateToken, userController.getAll);
 
-router.get('/:id', userController.getById);
+router.get('/:id', authMiddleware.validateToken, userController.getById);
 
 module.exports = router;

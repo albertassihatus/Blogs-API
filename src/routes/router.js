@@ -1,15 +1,15 @@
 const express = require('express');
 
-const authMiddleware = require('../middlewares/auth.middleware');
-
 const authRouter = require('./auth.router');
 const userRouter = require('./user.router');
+const categoryRouter = require('./category.router');
 
 const routers = express.Router();
 
 routers.use('/login', authRouter);
 
-// routers.use(authMiddleware.validateToken);
-routers.use('/user', authMiddleware.validateToken, userRouter);
+routers.use('/user', userRouter);
+
+routers.use('/categories', categoryRouter);
 
 module.exports = routers;
