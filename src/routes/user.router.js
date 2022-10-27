@@ -16,4 +16,6 @@ existEmail, userController.createUser);
 
 router.get('/', userController.getAll);
 
+router.get('/:id', userController.getById);
+
 module.exports = router;
