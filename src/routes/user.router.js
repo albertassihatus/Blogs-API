@@ -14,4 +14,6 @@ emailValidate,
 passwordValidate,
 existEmail, userController.createUser);
 
+router.get('/', userController.getAll);
+
 module.exports = router;

@@ -43,7 +43,7 @@ const validateLogin = async ({ email, password }) => {
 const validateToken = (token) => {
   if (!token) {
     const e = new Error('Token é obrigatório');
-    throw e;
+    console.log(e);
   }
 
   const user = jwtUtil.validateToken(token);
