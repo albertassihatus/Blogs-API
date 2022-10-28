@@ -15,4 +15,6 @@ postController.createPost);
 
 router.get('/', authMiddleware.validateToken, postController.getAll);
 
+router.get('/:id', authMiddleware.validateToken, postController.getById);
+
 module.exports = router;
