@@ -1,7 +1,5 @@
 'use strict';
 
-const { UCS2_GENERAL_MYSQL500_CI } = require("mysql2/lib/constants/charsets");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('blog_posts', {
